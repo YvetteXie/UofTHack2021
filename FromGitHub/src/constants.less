@@ -1,0 +1,36 @@
+@GUTTER: 1rem;
+
+@NUM_QUEUE_TILES: 5;
+@NUM_BOARD_ROWS: 7;
+@NUM_BOARD_COLS: 10;
+
+@TILE_SIZE: floor(100vh / (@NUM_BOARD_ROWS + 1));
+
+@FONT_SIZE_SM: @TILE_SIZE / 3;
+@FONT_SIZE_MD: @TILE_SIZE / 2;
+@FONT_SIZE_LG: @TILE_SIZE * 0.75;
+@FONT_SIZE_XL: @TILE_SIZE;
+
+@TRANSITION_QUEUE: 300ms;
+@TRANSITION_HOVER: 500ms;
+@TRANSITION_PLACE: 300ms; // Animation time when placing new tiles
+@TRANSITION_SWAP: 1000ms; // Animation time when swapping existing tiles
+@TRANSITION_BOOM: @TRANSITION_SWAP - @TRANSITION_PLACE;
+@TRANSITION_GAME_OVER: 1000ms;
+@TRANSITION_SCREEN: 200ms; // Animation time when showing overlay (next level, game over, etc.)
+
+@TEXT_COLOR: #555;
+
+@ZINDEX_GOO: 1; // Goo that fills the tiles
+@ZINDEX_START_BLOCK: 2; // Green block on start tile
+@ZINDEX_PREVIEW: 2; // Hover state showing next tile
+@ZINDEX_TIMER: 3; // Timer icon (shows over start tile before goo starts flowing)
+@ZINDEX_BOARD_OVERLAY: 5; // Game start/game over/etc screen
+
+.positionFill() {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+}

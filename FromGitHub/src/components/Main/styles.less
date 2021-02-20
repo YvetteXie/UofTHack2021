@@ -1,0 +1,116 @@
+@import '~animations.less';
+@import '~constants.less';
+
+.main {
+    color: @TEXT_COLOR;
+    font-family: 'Candal', sans-serif;
+    font-size: @FONT_SIZE_SM;
+    text-shadow: 1px 1px #DDD;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+
+    .row {
+        @spacerRatio: 0.5;
+        @queueRatio: 1;
+
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        margin: 0 auto;
+        width: ceil(@TILE_SIZE * (@NUM_BOARD_COLS + @spacerRatio + @queueRatio));
+
+        .queue { flex: @queueRatio; }
+        .spacer { flex: @spacerRatio; }
+        .board { flex: @NUM_BOARD_COLS; }
+    }
+}
+
+.scoreRow {
+    display: flex;
+    .scoreCol { flex: 1; }
+}
+
+.board {
+    position: relative;
+
+    .screen {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        background-image: url('../../../public/images/splat.svg');
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+
+        animation: fadeInScaleUp @TRANSITION_SCREEN both;
+        z-index: @ZINDEX_BOARD_OVERLAY;
+        .positionFill();
+
+        .splat {
+            width: 70%;
+        }
+    }
+}
+
+.rotatePrompt {
+    margin: @GUTTER;
+}
+
+.audioToggle {
+    cursor: pointer;
+    margin-top: @GUTTER;
+    text-align: center;
+    .audioIcon {
+        height: @FONT_SIZE_SM;
+    }
+}
+
+// Adapted from
+// https://designshack.net/articles/css/12-fun-css-text-shadows-you-can-copy-and-paste/
+.funkyTextShadow(@color) {
+    text-shadow: 0 1px 0 darken(@color, 10%),
+                 0 2px 0 darken(@color, 20%),
+                 0 3px 0 darken(@color, 30%),
+                 0 -1px 1px rgba(0,0,0,.1),
+                 0 6px 1px rgba(0,0,0,.1),
+                 0 0 5px rgba(0,0,0,.3),
+                 0 1px 3px rgba(0,0,0,.3),
+                 0 3px 5px rgba(0,0,0,.2),
+                 0 5px 10px rgba(0,0,0,.25);
+}
+
+:global(.funky-text) {
+    color: #eee;
+    font-family: "Slackey";
+    font-variant: small-caps;
+    font-size: @FONT_SIZE_MD;
+    letter-spacing: 2px;
+    .funkyTextShadow(#eee);
+
+    &:global(.is-title) {
+        font-size: @FONT_SIZE_XL;
+    }
+
+    &:global(.is-green) {
+        color: #ACDD46;
+        .funkyTextShadow(#ACDD46);
+    }
+
+    &:global(.is-red) {
+        color: #FF5959;
+        .funkyTextShadow(#FF5959);
+    }
+
+    &:global(.is-yellow) {
+        color: #FFCC00;
+        .funkyTextShadow(#FFCC00);
+    }
+}
+
+:global(p) {
+    margin: 5px 0;
+}

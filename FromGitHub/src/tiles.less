@@ -1,0 +1,40 @@
+@import '~constants.less';
+
+.background {
+    background-image: url('../public/images/back-tile.svg');
+    background-size: cover;
+    width: @TILE_SIZE;
+    height: @TILE_SIZE;
+    position: relative;
+}
+
+.startUp, .startRight, .startDown, .startLeft {
+    &::after {
+        content: "";
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: contain;
+        z-index: @ZINDEX_START_BLOCK;
+        .positionFill();
+    }
+}
+
+.startUp::after {
+    background-image: url(../public/images/green-horizontal.svg);
+    top: 50%;
+}
+
+.startRight::after {
+    background-image: url(../public/images/green-vertical.svg);
+    right: 50%;
+}
+
+.startDown::after {
+    background-image: url(../public/images/green-horizontal.svg);
+    bottom: 50%;
+}
+
+.startLeft::after {
+    background-image: url(../public/images/green-vertical.svg);
+    left: 50%;
+}
